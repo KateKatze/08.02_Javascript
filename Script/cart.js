@@ -24,7 +24,7 @@ for (let val of products) {
     <img class="product-image" src="${val.image}" width="200" height="200">
     <div class="product-details">
         <p class="product-price h4 m-3">${val.price} €</p>
-        <button class="btn btn-outline-danger p-1 product-button" type="button">Buy now</button>
+        <button class="btn btn-outline-danger p-1 product-button" type="button">In cart</button>
     </div>
     </div>
     `
@@ -103,7 +103,7 @@ function createRows() {
 function qttynum() {
     let qttynum = 0;
     for (let val of cart) {
-        qttynum = val.qtty;
+        qttynum = qttynum + val.qtty;
     }
     document.getElementById("qttynum").innerHTML = qttynum;
 }
