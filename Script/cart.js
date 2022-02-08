@@ -2,19 +2,19 @@
  * JavaScricpt Shopping Cart
  */
 var products = [{
-    name: "Cube 2019",
-    image: "Images/cube2019.jpeg",
-    price: 3200.00,
+    name: "Summer bouquet",
+    image: "https://cdn.pixabay.com/photo/2016/11/21/16/02/basket-1846135_1280.jpg",
+    price: 80.00,
     qtty: 1
 }, {
-    name: "GT Avalanche",
-    image: "Images/gtavalanche.jpg",
-    price: 2100.00,
+    name: "Wedding bouquet",
+    image: "https://cdn.pixabay.com/photo/2017/08/31/11/55/wedding-2700495__480.jpg",
+    price: 120.00,
     qtty: 1
 }, {
-    name: "Trek 8",
-    image: "Images/trekfull8.jpg",
-    price: 4500.00,
+    name: "Spring bouquet",
+    image: "https://cdn.pixabay.com/photo/2019/04/10/17/10/tulip-4117556__480.jpg",
+    price: 45.00,
     qtty: 1
 }];
 
@@ -24,7 +24,7 @@ for (let val of products) {
     <img class="product-image" src="${val.image}" width="200" height="200">
     <div class="product-details">
         <p class="product-price h4 m-3">${val.price} €</p>
-        <button class="btn btn-primary product-button" type="button">ADD TO CART</button>
+        <button class="btn btn-outline-danger p-1 product-button" type="button">Buy now</button>
     </div>
     </div>
     `
