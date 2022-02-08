@@ -1,5 +1,5 @@
 /**
- * JavaScricpt Shopping Cart
+ * JavaScript Shopping Cart
  */
 var products = [{
     name: "Summer bouquet",
@@ -41,6 +41,7 @@ function addToCart(product) {
     }
     createRows();
     Total();
+    qttynum();
 }
 
 
@@ -83,17 +84,28 @@ function createRows() {
     for (let i = 0; i < plus.length; i++) {
         plus[i].addEventListener("click", function() {
             plusQtty(i);
+            qttynum();
             Total();
         });
         minus[i].addEventListener("click", function() {
             minusQtty(i);
+            qttynum();
             Total();
         });
         del[i].addEventListener("click", function() {
             deleteItem(i);
+            qttynum();
             Total();
         });
     }
+}
+
+function qttynum() {
+    let qttynum = 0;
+    for (let val of cart) {
+        qttynum = val.qtty;
+    }
+    document.getElementById("qttynum").innerHTML = qttynum;
 }
 
 function Total() {
