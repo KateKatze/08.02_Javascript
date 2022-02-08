@@ -42,6 +42,7 @@ function addToCart(product) {
     createRows();
     Total();
     qttynum();
+    // discount();
 }
 
 
@@ -50,6 +51,7 @@ let btns = document.getElementsByClassName("product-button");
 for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", function() {
         addToCart(products[i]);
+        sortPrice();
     })
 }
 
@@ -86,16 +88,19 @@ function createRows() {
             plusQtty(i);
             qttynum();
             Total();
+            sortPrice();
         });
         minus[i].addEventListener("click", function() {
             minusQtty(i);
             qttynum();
             Total();
+            sortPrice();
         });
         del[i].addEventListener("click", function() {
             deleteItem(i);
             qttynum();
             Total();
+            sortPrice();
         });
     }
 }
@@ -108,12 +113,31 @@ function qttynum() {
     document.getElementById("qttynum").innerHTML = qttynum;
 }
 
+function Discount(price) {
+    // let discount = 0;
+    // let totalpr = document.getElementById("price").innerHTML;
+    var amount = 0;
+    // if (totalpr >= 100.00) {
+    //     discount = totalpr - (totalpr * 0.1);
+    // }
+    // document.getElementById("discount").innerHTML = discount;
+    if (price >= 100) {
+        amount = price * 0.1;
+    }
+
+    return amount;
+}
+
 function Total() {
-    let total = 0;
+    var total = 0;
     for (let val of cart) {
         total = total + (val.price * val.qtty);
     }
-    document.getElementById("price").innerHTML = total.toFixed(2) + " €";
+
+    var discount = Discount(total);
+    document.getElementById("discount").innerHTML = discount.toFixed(2) + " €";
+    var finalPrice = total - discount;
+    document.getElementById("price").innerHTML = finalPrice.toFixed(2) + " €";
 }
 
 function plusQtty(i) {
@@ -136,3 +160,13 @@ function deleteItem(i) {
     cart.splice(i, 1);
     createRows();
 }
+
+function sortPrice() {
+    // let pricecart = document.getElementsByClassName("cart-price")[i].innerHTML;
+    // let quantitycart = document.getElementsByClassName("cart-quantity")[i].innerHTML;
+    // let priceQuant = pricecart * quantitycart;
+    cart.sort((a, b) => (b.price * b.qtty) - (a.price * a.qtty)); // array.sort((a,b) => a.qtty - b.qtty)
+    createRows();
+}
+
+// document.getElementById("btn-purchase").addEventListener("click", sortPrice);
